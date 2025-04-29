@@ -3,39 +3,37 @@ import db from "../config/database.js";
 
 const { DataTypes } = Sequelize; 
 
-const Users = db.define('users', {}, {
-    name:{
+const Users = db.define('users', {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email:{
+    email: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
-    password:{
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
-    validate:{
-            len:{
+        validate: {
+            len: {
                 args: [6, 20],
                 msg: "Password must be between 6 and 20 characters"
             }
         }
     },
-    refresh_token:{
+    refresh_token: {
         type: DataTypes.TEXT
-    },  
-
-},{
-    freezetableName: true,
-    timestamps: false,
+    }
+}, {
+    freezeTableName: true,
+    timestamps: true, 
     tableName: 'users',
     underscored: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
-    deletedAt: 'deleted_at',
-
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
 });
+
 
 export default Users;   
 
