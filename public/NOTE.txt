@@ -1,0 +1,3 @@
+Beberapa Cara Untuk jalanin:
+1. Gunakan live server di vs code
+2. Buka langsung file index.html di browser
