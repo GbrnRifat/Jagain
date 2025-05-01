@@ -65,3 +65,7 @@ export const login = async (req, res) => {
     }
 }
 
+console.log("logout function loaded");
+export const logout = async (req, res) => {
+    res.status(200).json({ message: "Logged out" });
+};

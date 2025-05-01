@@ -1,7 +1,6 @@
 import express from 'express';
-import { getAllUsers, login, Register } from '../controllers/Users.js';
-import { verifikasiToken } from '../middleware/token.js';
-import { refreshToken } from '../controllers/retoken.js';
+import { getAllUsers, login, logout, Register } from '../controllers/Users.js';
+
 
 
 const router = express.Router();
@@ -9,7 +8,7 @@ const router = express.Router();
 router.get('/users', getAllUsers);
 router.post('/register', Register);
 router.post('/login',login);
-router.get('/token',refreshToken);
+router.get('/logout',logout);
 
 
 export default router;
