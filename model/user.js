@@ -1,5 +1,11 @@
 import { Sequelize } from "sequelize";  
 import db from "../config/database.js";
+import express from "express";
+
+const app = express();
+
+app.use(express.json());
+
 
 const { DataTypes } = Sequelize; 
 

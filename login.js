@@ -1,8 +1,13 @@
 import db from "./config/database.js";
 import express from "express";
+import dotenv from "dotenv";
 import router from "./route/index.js";
 import Users from "./model/user.js";
+import cors from 'cors';
+import cookieParser from "cookie-parser";
 
+
+dotenv.config();
 
 const app = express();  
 
@@ -14,10 +19,10 @@ try {
     console.error("Tidak bisa connect dalam database:", error); 
 }
 
+app.use(cookieParser)
 app.use(router)
 app.use(express.json());
 
-import cors from 'cors';
 app.use(cors());
 
 
