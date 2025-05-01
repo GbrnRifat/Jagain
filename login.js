@@ -19,7 +19,6 @@ try {
     console.error("Tidak bisa connect dalam database:", error); 
 }
 
-app.use(cookieParser)
 app.use(router)
 app.use(express.json());
 
