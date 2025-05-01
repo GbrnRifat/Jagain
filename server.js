@@ -5,6 +5,10 @@ const path = require('path');
 
 const app = express();
 const port = 5000;
+const profileRoutes = require('./routes/profile');
+
+app.use(express.json());
+app.use('/api/profile', profileRoutes);
 
 // Middleware
 app.use(cors());
