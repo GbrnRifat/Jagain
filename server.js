@@ -2,22 +2,23 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+const userRoutes = require('./Users');
+
+const loginRoutes = require('./login');
+const storedPasswordsRoutes = require('./routes/storedPasswords');
 
 const app = express();
 const port = 5000;
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
-
-// Static folder untuk HTML
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-const storedPasswordsRoutes = require('./routes/storedPasswords');
 app.use('/api/stored-passwords', storedPasswordsRoutes);
+app.use('/api', userRoutes);
+app.use('/api', loginRoutes);
 
-// Jalankan server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
