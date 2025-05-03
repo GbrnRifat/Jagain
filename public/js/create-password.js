@@ -23,3 +23,19 @@ document.getElementById('create-password-form').addEventListener('submit', async
     alert('Gagal menyimpan password!');
   }
 });
+
+const user_id = localStorage.getItem("user_id");
+async function loadHeaderInfo() {
+  if (!user_id) {
+    alert("User ID not found.");
+    return;
+  }
+
+  const res = await fetch(`http://localhost:5000/api/dashboard-info/${user_id}`);
+  const data = await res.json();
+
+  document.getElementById("greeting").textContent = `Hello, ${data.name}`;
+  document.getElementById("password-count").textContent = `You have ${data.passwordCount} passwords.`;
+}
+
+loadHeaderInfo();
